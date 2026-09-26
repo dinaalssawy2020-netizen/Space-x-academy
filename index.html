@@ -1,3 +1,63 @@
+// إعداد المتغيرات والمفاتيح
+const API_KEY = "YOUR_GEMINI_API_KEY"; //GEMINI_API_KEY="AIzaSyYourSecretKeyHere"
+const API_URL = `https://googleapis.com{API_KEY}`;
+
+const chatBox = document.getElementById("chat-box");
+const userInput = document.getElementById("user-input");
+const sendBtn = document.getElementById("send-btn");
+
+// وظيفة لإضافة الرسائل داخل الشاشة
+function appendMessage(sender, text) {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = sender === "user" ? "message user-msg" : "message ai-msg";
+    msgDiv.innerText = text;
+    chatBox.appendChild(msgDiv);
+    chatBox.scrollTop = chatBox.scrollHeight; // التمرير التلقائي لأسفل
+}
+
+// وظيفة إرسال السؤال إلى Gemini والاتصال بالـ API
+async function sendMessageToGemini() {
+    const prompt = userInput.value.trim();
+    if (!prompt) return;
+
+    // 1. عرض رسالة المستخدم في الواجهة
+    appendMessage("user", prompt);
+    userInput.value = "";
+
+    // 2. عرض مؤشر "جاري التفكير..."
+    appendMessage("ai", "جاري التفكير...");
+
+    try {
+        // 3. الاتصال بخوادم Google Gemini واقتران البيانات بقواعد الأمان لمشروعك
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: prompt }] }]
+            })
+        });
+
+        const data = await response.json();
+        
+        // مسح كلمة "جاري التفكير..." واستبدالها بالرد الحقيقي
+        chatBox.removeChild(chatBox.lastChild);
+
+        // 4. استخراج النص القادم من الذكاء الاصطناعي وعرضه
+        const aiResponse = data.candidates[0].content.parts[0].text;
+        appendMessage("ai", aiResponse);
+
+    } catch (error) {
+        console.error("خطأ في الاتصال بالـ API:", error);
+        chatBox.removeChild(chatBox.lastChild);
+        appendMessage("ai", "عذراً، حدث خطأ في الاتصال بالخادم. يرجى المحاولة لاحقاً.");
+    }
+}
+
+// تشغيل الإرسال عند الضغط على زر الإرسال أو زر Enter
+sendBtn.addEventListener("click", sendMessageToGemini);
+userInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") sendMessageToGemini();
+});
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
