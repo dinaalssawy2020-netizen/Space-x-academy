@@ -1,63 +1,4 @@
-// إعداد المتغيرات والمفاتيح
-const API_KEY = "YOUR_GEMINI_API_KEY"; //GEMINI_API_KEY="AQ.Ab8RN6LF8jtbBef_3HJoZVRXSljcDDHM4EF5J1G-b-n8tR-bsg"
-const API_URL = `https://googleapis.com{API_KEY}`;
 
-const chatBox = document.getElementById("chat-box");
-const userInput = document.getElementById("user-input");
-const sendBtn = document.getElementById("send-btn");
-
-// وظيفة لإضافة الرسائل داخل الشاشة
-function appendMessage(sender, text) {
-    const msgDiv = document.createElement("div");
-    msgDiv.className = sender === "user" ? "message user-msg" : "message ai-msg";
-    msgDiv.innerText = text;
-    chatBox.appendChild(msgDiv);
-    chatBox.scrollTop = chatBox.scrollHeight; // التمرير التلقائي لأسفل
-}
-
-// وظيفة إرسال السؤال إلى Gemini والاتصال بالـ API
-async function sendMessageToGemini() {
-    const prompt = userInput.value.trim();
-    if (!prompt) return;
-
-    // 1. عرض رسالة المستخدم في الواجهة
-    appendMessage("user", prompt);
-    userInput.value = "";
-
-    // 2. عرض مؤشر "جاري التفكير..."
-    appendMessage("ai", "جاري التفكير...");
-
-    try {
-        // 3. الاتصال بخوادم Google Gemini واقتران البيانات بقواعد الأمان لمشروعك
-        const response = await fetch(API_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: prompt }] }]
-            })
-        });
-
-        const data = await response.json();
-        
-        // مسح كلمة "جاري التفكير..." واستبدالها بالرد الحقيقي
-        chatBox.removeChild(chatBox.lastChild);
-
-        // 4. استخراج النص القادم من الذكاء الاصطناعي وعرضه
-        const aiResponse = data.candidates[0].content.parts[0].text;
-        appendMessage("ai", aiResponse);
-
-    } catch (error) {
-        console.error("خطأ في الاتصال بالـ API:", error);
-        chatBox.removeChild(chatBox.lastChild);
-        appendMessage("ai", "عذراً، حدث خطأ في الاتصال بالخادم. يرجى المحاولة لاحقاً.");
-    }
-}
-
-// تشغيل الإرسال عند الضغط على زر الإرسال أو زر Enter
-sendBtn.addEventListener("click", sendMessageToGemini);
-userInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") sendMessageToGemini();
-});
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -65,262 +6,86 @@ userInput.addEventListener("keypress", (e) => {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Space X Academy</title>
 <style>
-  body{
-    background:#1a0b33; color:white; font-family: sans-serif;
-    margin:0; padding:20px; text-align:center;
-  }
-  h1{ margin-top:30px }
-  .grid{
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap:20px;
-    max-width:900px;
-    margin:30px auto;
-  }
-  .course{
-    background: rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.15);
-    border-radius:18px;
-    padding:20px;
-    text-align:right;
-  }
-  .course h3{ color:#d8b4fe; margin:0 0 10px 0 }
-  .course p{ opacity:.8; font-size:14px }
-  .course a{ color:#a78bfa; font-weight:bold; text-decoration:none }
-  .footer{ margin-top:50px; opacity:.6; font-size:13px }
-
-  /* في الموبايل يرجعوا تحت بعض */
-  @media (max-width: 700px){
-    .grid{ grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Space X Academy</title>
-<style>
-  body{
-    background:#1a0b33; color:white; font-family: sans-serif;
-    margin:0; padding:20px; text-align:center;
-  }
-  h1{ margin-top:30px }
-  .grid{
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap:20px;
-    max-width:900px;
-    margin:30px auto;
-  }
-  .course{
-    background: rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.15);
-    border-radius:18px;
-    padding:20px;
-    text-align:right;
-  }
-  .course h3{ color:#d8b4fe; margin:0 0 10px 0 }
-  .course p{ opacity:.8; font-size:14px }
-  .course a{ color:#a78bfa; font-weight:bold; text-decoration:none }
-  .footer{ margin-top:50px; opacity:.6; font-size:13px }
-
-  /* في الموبايل يرجعوا تحت بعض */
-  @media (max-width: 700px){
-    .grid{ grid-template-columns: 1fr; }
-  }
+*{box-sizing:border-box}
+body{background:#1a0b2e;color:white;font-family:sans-serif;margin:0;padding:20px;text-align:center}
+h1{margin:10px 0 5px;font-size:28px}
+.subtitle{opacity:0.8;margin-bottom:20px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:15px;max-width:900px;margin:20px auto}
+.card{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:15px;padding:15px;backdrop-filter:blur(10px)}
+.card h3{color:#d8b4fe;font-size:14px;margin:0 0 8px}
+.card p{font-size:11px;opacity:0.8;margin:4px 0 10px}
+.card a{color:#a78bfa;text-decoration:none;font-size:12px;font-weight:bold;background:rgba(167,139,250,0.2);padding:5px 10px;border-radius:20px;display:inline-block}
+.footer{margin-top:40px;font-size:12px;opacity:0.6}
+#chat-box{max-width:900px;margin:40px auto;background:#2a1552;border-radius:15px;padding:15px;text-align:right}
+#messages{max-height:250px;overflow-y:auto;margin-bottom:10px;text-align:left;direction:ltr}
+#messages div{margin:8px 0;padding:8px 12px;border-radius:10px;font-size:13px}
+.user-msg{background:#a78bfa;color:white;align-self:flex-end}
+.bot-msg{background:rgba(255,255,255,0.1);color:white}
+#input-area{display:flex;gap:10px}
+#input-area input{flex:1;padding:10px;border-radius:10px;border:none;outline:none}
+#input-area button{padding:10px 18px;border-radius:10px;border:none;background:#a78bfa;color:white;font-weight:bold;cursor:pointer}
+@media(max-width:600px){.cards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <h1>Space X Academy</h1>
-<p>هنا هتلاقي احسن الكورسات المجانية</p>
+<p class="subtitle">هنا هتلاقي احسن الكورسات المجانية</p>
 
-<div class="grid">
-  <div class="course">
-    <h3>1. كورس HTML + CSS + JavaScript</h3>
-    <p>هتتعلم ازاي تعمل مواقع من الصفر</p>
-    <a href="#">شاهد الكورس على يوتيوب</a>
-  </div>
-
-  <div class="course">
-    <h3>2. كورس Python للمبتدئين</h3>
-    <p>اول خطوة بجد عشان تدخل عالم الذكاء الاصطناعي</p>
-    <a href="#">شاهد الكورس على يوتيوب</a>
-  </div>
-
-  <div class="course">
-    <h3>3. كورس الذكاء الاصطناعي ChatGPT</h3>
-    <p>ازاي تستخدم ChatGPT في الشغل والدراسة</p>
-    <a href="#">شاهد الكورس على يوتيوب</a>
-  </div>
-
-  <div class="course">
-    <h3>4. كورس تصميم المواقع بـ Figma</h3>
-    <p>اتعلم ازاي تصمم موقع قبل ما تبرمجه</p>
-    <a href="#">شاهد الكورس على يوتيوب</a>
-  </div>
+<div class="cards">
+<div class="card"><h3>1. كورس HTML + CSS + JavaScript</h3><p>هتتعلم ازاي تعمل موقع من الصفر للاحتراف</p><a href="https://www.youtube.com" target="_blank">شاهد على يوتيوب</a></div>
+<div class="card"><h3>2. كورس Python للمبتدئين</h3><p>اول خطوة بجد عشان تدخل عالم الذكاء الاصطناعي</p><a href="https://www.youtube.com" target="_blank">شاهد على يوتيوب</a></div>
+<div class="card"><h3>3. كورس الذكاء الاصطناعي ChatGPT</h3><p>ازاي تستخدم ChatGPT في الشغل والدراسة باحتراف</p><a href="https://www.youtube.com" target="_blank">شاهد على يوتيوب</a></div>
+<div class="card"><h3>4. كورس تصميم المواقع بـ Figma</h3><p>اتعلم ازاي تصمم موقع قبل ما تبرمجه</p><a href="https://www.youtube.com" target="_blank">شاهد على يوتيوب</a></div>
 </div>
 
-<div class="footer">Created by Dina El Sawy © 2026 | Space X Academy</div>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Space X Academy</title>
-<style>
-  body{
-    background:#1a0b33; color:white; font-family: sans-serif;
-    margin:0; padding:20px; text-align:center;
-  }
-  h1{ margin-top:30px }
-  .grid{
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap:20px;
-    max-width:900px;
-    margin:30px auto;
-  }
-  .course{
-    background: rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.15);
-    border-radius:18px;
-    padding:20px;
-    text-align:right;
-  }
-  .course h3{ color:#d8b4fe; margin:0 0 10px 0 }
-  .course p{ opacity:.8; font-size:14px }
-  .course a{ color:#a78bfa; font-weight:bold; text-decoration:none }
-  .footer{ margin-top:50px; opacity:.6; font-size:13px }
-
-  /* في الموبايل يرجعوا تحت بعض */
-  @media (max-width: 700px){
-    .grid{ grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
-
-<h1>Space X Academy</h1>
-<p>هنا هتلاقي احسن الكورسات المجانية</p>
-
-<div class="grid">
-  <div class="course">
-    <h3>1. كورس HTML + CSS + JavaScript</h3>
-    <p>هتتعلم ازاي تعمل مواقع من الصفر</p>
-    <a href="#">شاهد الكورس على يوتيوب</a>
-  </div>
-
-  <div class="course">
-    <h3>2. كورس Python للمبتدئين</h3>
-    <p>اول خطوة بجد عشان تدخل عالم الذكاء الاصطناعي</p>
-    <a href="#">شاهد الكورس على يوتيوب</a>
-  </div>
-
-  <div class="course">
-    <h3>3. كورس الذكاء الاصطناعي ChatGPT</h3>
-    <p>ازاي تستخدم ChatGPT في الشغل والدراسة</p>
-    <a href="#">شاهد الكورس على يوتيوب</a>
-  </div>
-
-  <div class="course">
-    <h3>4. كورس تصميم المواقع بـ Figma</h3>
-    <p>اتعلم ازاي تصمم موقع قبل ما تبرمجه</p>
-    <a href="#">شاهد الكورس على يوتيوب</a>
-  </div>
+<div id="chat-box">
+<h3 style="text-align:center;color:#d8b4fe;margin:0 0 10px">اسأل مساعد Space X 🤖</h3>
+<div id="messages"><div class="bot-msg">أهلا! أنا مساعد Space X، اسألني عن أي كورس</div></div>
+<div id="input-area">
+<input id="user-input" placeholder="اكتب سؤالك هنا...">
+<button id="send-btn">ارسال</button>
+</div>
 </div>
 
-<div class="footer">Created by Dina El Sawy © 2026 | Space X Academy</div>
+<p class="footer">Created by Dina El Sawy © 2026 | Space X Academy</p>
 
-</body>
-</html>
-
-<h1>Space X Academy</h1>
-<p>هنا هتلاقي احسن الكورسات المجانية</p>
-
-<div class="grid">
-  <div class="course">
-    <h3>1. كورس HTML + CSS + JavaScript</h3>
-    <p>هتتعلم ازاي تعمل مواقع من الصفر</p>
-    <a href="#">شاهد الكورس على يوتيوب</a>
-  </div>
-
-  <div class="course">
-    <h3>2. كورس Python للمبتدئين</h3>
-    <p>اول خطوة بجد عشان تدخل عالم الذكاء الاصطناعي</p>
-    <a href="#">شاهد الكورس على يوتيوب</a>
-  </div>
-
-  <div class="course">
-    <h3>3. كورس الذكاء الاصطناعي ChatGPT</h3>
-    <p>ازاي تستخدم ChatGPT في الشغل والدراسة</p>
-    <a href="#">شاهد الكورس على يوتيوب</a>
-  </div>
-
-  <div class="course">
-    <h3>4. كورس تصميم المواقع بـ Figma</h3>
-    <p>اتعلم ازاي تصمم موقع قبل ما تبرمجه</p>
-    <a href="#">شاهد الكورس على يوتيوب</a>
-  </div>
-</div>
-
-<div class="footer">Created by Dina El Sawy © 2026 | Space X Academy</div>
-
-</body>
-</html>
-    <div class="container">
-            <h1>Space X Academy</h1>
-        <p>هنا هتلاقي احسن الكورسات المجانية</p>
-
-        <div class="course">
-          <h3>1. كورس HTML + CSS + JavaScript</h3>
-          <p>هتتعلم ازاي تعمل مواقع من الصفر</p>
-          <a href="https://www.youtube.com/watch?v=UB1O30fR-EE" target="_blank" class="btn">شاهد الكورس على يوتيوب</a>
-        </div>
-        <div class="course">
-          <h3>2. كورس Python للمبتدئين</h3>
-          <p>اول خطوة بجد عشان تدخل عالم الذكاء الاصطناعي</p>
-          <a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn">شاهد الكورس على يوتيوب</a>
-        </div>
-        <div class="course">
-          <h3>3. كورس الذكاء الاصطناعي ChatGPT</h3>
-          <p>ازاي تستخدم ChatGPT في الشغل والدراسة</p>
-          <a href="https://www.youtube.com/watch?v=2ePf9rue1Ao" target="_blank" class="btn">شاهد الكورس على يوتيوب</a>
-        </div>
-        <div class="course">
-          <h3>4. كورس تصميم المواقع بـ Figma</h3>
-          <p>اتعلم ازاي تصمم موقع قبل ما تبرمجه</p>
-          <a href="https://www.youtube.com/watch?v=FTFaQWZBqQ8" target="_blank" class="btn">شاهد الكورس على يوتيوب</a>
-        </div>
-
-        <div class="footer-name">
-            Created by Dina El Sawy © 2026 | Space X Academy
-        </div>
-    </div>
-
-<a href="#" id="wa-btn" class="whatsapp-float">💬</a>
 <script>
-const waNumber = ""; 
-document.getElementById('wa-btn').addEventListener('click', function(e){
- e.preventDefault();
- if(!waNumber){ alert (" تواصل معنا واتساب "); }
- else { window.open("https://wa.me/"+waNumber, "_blank"); }
-});
+const API_KEY = "AQ.Ab8RN6LF8jtbBef_3HJoZVRXSljcDDHM4EF5J1G-b-n8tR-bsg";
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+const chatBox = document.getElementById("messages");
+const userInput = document.getElementById("user-input");
+const sendBtn = document.getElementById("send-btn");
+function appendMessage(sender, text) {
+  const msgDiv = document.createElement("div");
+  msgDiv.className = sender === "user"? "user-msg" : "bot-msg";
+  msgDiv.textContent = (sender === "user"? "انت: " : "البوت: ") + text;
+  chatBox.appendChild(msgDiv);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+async function sendMessageToGemini() {
+  const prompt = userInput.value.trim();
+  if (!prompt) return;
+  appendMessage("user", prompt);
+  userInput.value = "";
+  appendMessage("ai", "ثانية بفكر...");
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+    });
+    const data = await response.json();
+    const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "مفيش رد";
+    chatBox.lastChild.remove();
+    appendMessage("ai", aiResponse);
+  } catch (error) {
+    chatBox.lastChild.remove();
+    appendMessage("ai", "حصل خطأ، اتأكدي ان الـ API Key صح");
+  }
+}
+sendBtn.addEventListener("click", sendMessageToGemini);
+userInput.addEventListener("keypress", (e) => { if (e.key === "Enter") sendMessageToGemini(); });
 </script>
 </body>
-<script src="//code.tidio.co/YOUR_UNIQUE_CODE.js" async></script>
-<!-- صندوق المحادثة الذكي -->
-<div id="chat-container">
-    <div id="chat-header">مساعد أكاديمية SpaceX الذكي</div>
-    <div id="chat-box"></div>
-    <div id="chat-input-area">
-        <input type="text" id="user-input" placeholder="اسألني أي شيء عن الفضاء..." />
-        <button id="send-btn">إرسال</button>
-    </div>
-</div>
-
+</html>
