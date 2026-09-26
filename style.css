@@ -1,4 +1,25 @@
 body {
-  background-color: #1a0b2e !important;
+  background: linear-gradient(135deg, #1a0b2e, #4a148c) !important;
   color: white !important;
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  color: #e1b5fe !important;
+  text-shadow: 0 2px 10px rgba(225, 181, 254, 0.5);
+}
+
+a, button {
+  background-color: #9c27b0 !important;
+  color: white !important;
+  border-radius: 12px;
+  padding: 10px 20px;
+  text-decoration: none;
+  border: none;
+}
+
+a:hover, button:hover {
+  background-color: #ce93d8 !important;
 }
