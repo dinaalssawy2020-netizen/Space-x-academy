@@ -6,87 +6,78 @@
 <title>Space X Academy</title>
 <style>
 *{box-sizing:border-box}
-body{background:#1a0b2e;color:white;font-family:sans-serif;margin:0;padding:20px;text-align:center}
-h1{margin:10px 0 5px;font-size:28px}
+body{background:#1a0b2e;color:white;font-family:sans-serif;margin:0;padding:15px;text-align:center}
 .subtitle{opacity:0.7;margin-bottom:20px}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:15px;max-width:900px;margin:20px auto}
-.card{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:15px;padding:15px;backdrop-filter:blur(5px)}
-.card h3{font-size:16px;margin:0 0 10px}
-.card a{color:#a78bfa;text-decoration:none;font-size:12px;font-weight:bold;background:rgba(167,139,250,0.2);padding:5px 10px;border-radius:5px}
-#chat-box{width:90%;max-width:600px;margin:20px auto;background:#251552;border-radius:15px;padding:15px;text-align:right}
-#messages{max-height:250px;overflow-y:auto;margin-bottom:10px;text-align:left;direction:ltr}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:900px;margin:20px auto}
+.card{background:rgba(255,255,255,0.1);border-radius:15px;padding:15px}
+.card a{color:#a78bfa;text-decoration:none;font-size:12px;background:rgba(167,139,250,0.2);padding:5px 10px;border-radius:5px;display:inline-block;margin-top:8px}
+#chat-box{width:95%;max-width:600px;margin:20px auto;background:#251552;border-radius:15px;padding:15px}
+#messages{max-height:250px;overflow-y:auto;margin-bottom:10px;text-align:right}
 #messages div{margin:5px 0;padding:10px;border-radius:10px;font-size:13px}
-.user-msg{background:#a78bfa;color:white;align-self:flex-end}
-.bot-msg{background:rgba(255,255,255,0.1);color:white}
-#input-area{display:flex;gap:10px}
+.user-msg{background:#a78bfa}
+.bot-msg{background:rgba(255,255,255,0.15)}
+#input-area{display:flex;gap:8px}
 #input-area input{flex:1;padding:10px;border-radius:10px;border:none;outline:none}
 #input-area button{padding:10px 15px;border-radius:10px;border:none;background:#a78bfa;color:white;font-weight:bold;cursor:pointer}
-@media(max-width:600px){.cards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<h1>Space X Academy</h1>
-<p class="subtitle">تعلمي أسرار البرمجيات الحديثة</p>
+<h1>Space X Academy 🚀</h1>
+<p class="subtitle">ابدأ رحلتك في عالم البرمجة من الصفر للاحتراف</p>
 
 <div class="cards">
 <div class="card"><h3>1. اساسيات HTML + CSS + JavaScript</h3><a href="https://www.youtube.com" target="_blank">شاهد المحتوى</a></div>
 <div class="card"><h3>2. اساسيات Python</h3><a href="https://www.youtube.com" target="_blank">شاهد المحتوى</a></div>
-<div class="card"><h3>3. كيف تستخدمي ChatGPT</h3><a href="https://www.youtube.com" target="_blank">شاهد المحتوى</a></div>
-<div class="card"><h3>4. تعلمي تصميم Figma</h3><a href="https://www.youtube.com" target="_blank">شاهد المحتوى</a></div>
+<div class="card"><h3>3. كيف تستخدم ChatGPT</h3><a href="https://www.youtube.com" target="_blank">شاهد المحتوى</a></div>
+<div class="card"><h3>4. تعلم تصميم Figma</h3><a href="https://www.youtube.com" target="_blank">شاهد المحتوى</a></div>
 </div>
 
 <div id="chat-box">
-<h3 style="text-align:center;color:#dbbafe;margin:0 0 10px">اسألي Space X 💬</h3>
-<div id="messages"><div class="bot-msg">اهلا بيكي في Space X Academy! اسأليني عن اي حاجة</div></div>
+<h3 style="margin-top:0">اسأل Space X 💬</h3>
+<div id="messages"><div class="bot-msg">اهلا بيك في Space X Academy! اسألني اي حاجة في البرمجة</div></div>
 <div id="input-area">
-<input id="user-input" placeholder="اكتبي سؤالك هنا...">
+<input id="user-input" placeholder="اكتب سؤالك هنا...">
 <button id="send-btn">إرسال</button>
 </div>
 </div>
 
-<p class="footer">Created by Dina El Sawy © 2026 | Space X Academy</p>
+<p style="opacity:0.5;font-size:11px;margin-top:20px">Created by Dina El Sawy © 2026</p>
 
 <script>
-const API_KEY = "AQ.Ab8RN6LF8jtbBef_3HJoZVRXSljcDDHM4EF5J1G-b-n8tR-bsg";
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
-const chatBox = document.getElementById("messages");
+const API_KEY = "AQ.Ab8RN6IYw0mK-kgb1E1xOAhMkC1q3XHLMU0AGvDBbA5n90IVaA";
+const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
+
+const messages = document.getElementById("messages");
 const userInput = document.getElementById("user-input");
 const sendBtn = document.getElementById("send-btn");
 
-function appendMessage(sender, text) {
-  const msgDiv = document.createElement("div");
-  msgDiv.className = sender === "user"? "user-msg" : "bot-msg";
-  msgDiv.textContent = (sender === "user"? "انت: " : "البوت: ") + text;
-  chatBox.appendChild(msgDiv);
-  chatBox.scrollTop = chatBox.scrollHeight;
+function addMsg(cls, t){ const d=document.createElement("div"); d.className=cls; d.textContent=t; messages.appendChild(d); messages.scrollTop=messages.scrollHeight; }
+
+async function send(){
+ const q=userInput.value.trim(); if(!q) return;
+ addMsg("user-msg","انت: "+q); userInput.value=""; addMsg("bot-msg","البوت بيفكر...");
+
+ try{
+  const r=await fetch(API_URL,{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "x-goog-api-key": API_KEY
+    },
+    body:JSON.stringify({contents:[{parts:[{text:q}]}]})
+  });
+  const data=await r.json();
+  console.log(data);
+  messages.lastChild.remove();
+  if(data.error){ addMsg("bot-msg","خطأ: "+data.error.message); return; }
+  const ans=data.candidates?.[0]?.content?.parts?.[0]?.text || "مفيش رد";
+  addMsg("bot-msg","البوت: "+ans);
+ }catch(e){ messages.lastChild.remove(); addMsg("bot-msg","خطأ في الاتصال: "+e.message); }
 }
 
-async function sendMessageToGemini() {
-  const prompt = userInput.value.trim();
-  if (!prompt) return;
-  appendMessage("user", prompt);
-  userInput.value = "";
-  appendMessage("ai", "ثانية واحدة...");
-
-  try {
-    const response = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-    });
-    const data = await response.json();
-    const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "مش عارف ارد";
-    chatBox.lastChild.remove();
-    appendMessage("ai", aiResponse);
-  } catch (error) {
-    chatBox.lastChild.remove();
-    appendMessage("ai", "حصل خطأ، اتأكدي من الـ API Key");
-  }
-}
-
-sendBtn.addEventListener("click", sendMessageToGemini);
-userInput.addEventListener("keypress", (e) => { if (e.key === "Enter") sendMessageToGemini(); });
+sendBtn.onclick=send;
+userInput.onkeypress=(e)=>{ if(e.key==="Enter") send(); };
 </script>
 
 </body>
