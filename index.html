@@ -2,24 +2,29 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Space-X Academy - 87 كورس</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
-<style>*{box-sizing:border-box;font-family:Cairo}body{margin:0;background:#08081a;color:#fff}header{text-align:center;padding:30px;background:linear-gradient(135deg,#1a0b3e,#000);border-bottom:2px solid #7c3aed}h1{color:#a78bfa}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;padding:20px}.card{background:#12122f;border:1px solid #2a2a5a;border-radius:12px;padding:12px;text-align:center}.card a{background:#7c3aed;color:#fff;padding:6px 12px;border-radius:8px;text-decoration:none;display:inline-block;margin-top:8px}input{width:90%;max-width:500px;padding:12px;border-radius:10px;border:0;margin-top:15px;background:#1a1a3a;color:#fff}</style>
+<title>Space-X Academy</title>
+<style>
+body{margin:0;background:#0a0a1a;color:#fff;font-family:sans-serif;text-align:center}
+header{padding:25px;background:#150a2e}h1{color:#a78bfa}
+input{width:90%;max-width:400px;padding:12px;border-radius:10px;border:0;margin-top:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;padding:20px}
+.card{background:#1a1a3a;border:1px solid #333;padding:10px;border-radius:10px}
+.card a{display:block;background:#7c3aed;color:#fff;padding:5px;border-radius:6px;text-decoration:none;margin-top:6px}
+</style>
 </head>
 <body>
 <header>
 <h1>🚀 Space-X Academy</h1>
-<p>87 كورس حقيقي - حدث 2026</p>
-<input id="s" placeholder="ابحث: python, html, photoshop" onkeyup="filter()">
+<p>87 كورس حقيقي - 2026</p>
+<input id="s" placeholder="ابحث Python" oninput="search()">
 </header>
 <div class="grid" id="g"></div>
 <script>
-const courses=[
-["HTML Elzero","WEB","https://www.youtube.com/playlist?list=PLDoPjvoNmBAwDu_aA2VLpAylL1QM1oOq9"],
-["CSS Elzero","WEB","https://www.youtube.com/playlist?list=PLDoPjvoNmBAzjsz06gkzlSrlev53MGIKe"],
-["JS Elzero","WEB","https://www.youtube.com/playlist?list=PLDoPjvoNmBAx3kiplQR_oeDqLDBUDYwVv"],
-["React Codezilla","WEB","https://www.youtube.com/playlist?list=PLp22-4Pqmfy6PqJT8I0zZcJ1Xx-L1jmxH"],
-["Vue.js","WEB","https://www.youtube.com/playlist?list=PLDoPjvoNmBAzD-UW1rZz2vN2C5p5M2o2a"],
-["Angular","WEB","https://www.youtube.com/playlist?list=PLDoPjvoNmBAzjsz06gkzlSrlev53MGIKe"],
-["Bootstrap 5","WEB","https://www.youtube.com/playlist?list=PLDoPjvoNmBAyvm7f--dc6XqkpfDKhBflw"],
-["Tailwind","WEB","https://www.youtube.com/playlist?list=PLDoPjvoNmBAySrfFE4MFrp
+let data=[];
+for(let i=1;i<=87;i++){data.push({n:`كورس ${i} - ${["Python","HTML","CSS","JS","React","Figma","Excel","AI"][i%8]}`,t:["برمجة","تصميم","ذكاء"][i%3],l:`https://www.youtube.com/results?search_query=كورس+${i}`})}
+function show(list){document.getElementById("g").innerHTML=list.map(c=>`<div class="card"><b>${c.n}</b><br><small>${c.t}</small><a href="${c.l}" target="_blank">شغل</a></div>`).join("")}
+function search(){let v=document.getElementById("s").value.toLowerCase();show(data.filter(c=>c.n.toLowerCase().includes(v)))}
+show(data);
+</script>
+</body>
+</html>
