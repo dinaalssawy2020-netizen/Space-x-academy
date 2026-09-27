@@ -6,33 +6,19 @@ input{width:90%;max-width:400px;padding:12px;border-radius:10px;border:0}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;padding:15px}
 .card{background:#1e1e4a;border-radius:12px;padding:10px;text-align:center;border:1px solid #333}
 .card a{background:#7c3aed;color:#fff;padding:6px 10px;border-radius:8px;text-decoration:none;display:block;margin-top:6px}
-#aiBtn{position:fixed;bottom:20px;left:20px;background:linear-gradient(135deg,#7c3aed,#ec4899);color:#fff;border:0;width:60px;height:60px;border-radius:50%;font-size:24px;box-shadow:0 4px 15px rgba(124,58,237,.5)}
-#aiBox{display:none;position:fixed;bottom:90px;left:20px;width:320px;height:400px;background:#12122e;border:1px solid #7c3aed;border-radius:15px;overflow:hidden}
-#aiBox header{padding:10px;background:#7c3aed;display:flex;justify-content:space-between}
-#aiBox iframe{width:100%;height:calc(100% - 40px);border:0;background:#fff}
+#aiBtn{position:fixed;bottom:20px;left:20px;background:linear-gradient(135deg,#7c3aed,#ec4899);color:#fff;border:0;width:60px;height:60px;border-radius:50%;font-size:24px;z-index:999}
+#aiBox{display:none;position:fixed;bottom:90px;left:20px;width:350px;height:450px;background:#fff;border-radius:15px;overflow:hidden;z-index:999;box-shadow:0 10px 30px #000}
+#aiBox header{padding:10px;background:#7c3aed;color:#fff;display:flex;justify-content:space-between}
+#aiBox iframe{width:100%;height:calc(100% - 40px);border:0}
 </style></head><body>
-<header><h1>🚀 Space-X Academy</h1><p>87 كورس عربي حقيقي</p><input id="s" placeholder="ابحث.. Python عربي" oninput="filter()"></header>
+<header><h1>🚀 Space-X Academy</h1><p>87 كورس id="s" placeholder="ابحث.." oninput="filter()"></header>
 <div class="grid" id="g"></div>
-
 <button id="aiBtn" onclick="toggleAI()">🤖</button>
-<div id="aiBox"><header><span>مساعد Gemini</span><span onclick="toggleAI()" style="cursor:pointer">✖</span></header>
-<iframe src="https://www.blackbox.ai/"></iframe></div>
-
+<div id="aiBox"><header><span>Gemini AI</span><span onclick="toggleAI()" style="cursor:pointer">✖</span></header>
+<iframe src="https://gemini.google.com"></iframe></div>
 <script>
 const courses=[
-["HTML كامل - الزيرو","https://www.youtube.com/playlist?list=PLDoPjvoNmBAwDu_aA2VLpAylL1QM1oOq9"],
-["CSS كامل - الزيرو","https://www.youtube.com/playlist?list=PLDoPjvoNmBAzjsz06gkzlSrlev53MGIKe"],
-["JavaScript - الزيرو","https://www.youtube.com/playlist?list=PLDoPjvoNmBAx3kiplQR_oeDqLDBUDYwVv"],
-["Python - الزيرو","https://www.youtube.com/playlist?list=PLDoPjvoNmBAyE2A0Fe2QApHCYysj4La1"],
-["React - Codezilla","https://www.youtube.com/playlist?list=PLp22-4Pqmfy6PqJT8I0zZcJ1Xx-L1jmxH"],
-["Figma عربي","https://www.youtube.com/results?search_query=كورس+figma+عربي+كامل"],
-["Excel احترافي","https://www.youtube.com/playlist?list=PLp22-4Pqmfy5sBgbUrJzV"],
-["ذكاء اصطناعي","https://www.youtube.com/results?search_query=كورس+ذكاء+اصطناعي+عربي"]
-];
-let all=[];
-for(let i=0;i<87;i++){let c=courses[i%courses.length]; all.push({n:`${c[0]} ${Math.floor(i/courses.length)+1}`,l:c[1]})}
-function render(list){document.getElementById("g").innerHTML=list.map(x=>`<div class="card"><b>${x.n}</b><a href="${x.l}" target="_blank">▶️ تشغيل عربي</a></div>`).join("")}
-function filter(){let v=document.getElementById("s").value.toLowerCase(); render(all.filter(a=>a.n.toLowerCase().includes(v)))}
-function toggleAI(){let b=document.getElementById("aiBox"); b.style.display=b.style.display=="block"?"none":"block"}
-render(all);
-</script></body></html>
+["HTML كامل - ","https://www.youtube.com/playlist?list=PLDoPjvoNmBAwDu_aA2VLpAylL1QM1oOq9"],
+["CSS كامل - ","https://www.youtube.com/playlist?list=PLDoPjvoNmBAzjsz06gkzlSrlev53MGIKe"],
+["JavaScript - ","https://www.youtube.com/playlist?list=PLDoPjvoNmBAx3kiplQR_oeDqLDBUDYwVv"],
+["Python - ","https://www.youtube.com/playlist?list=PLDoPjvoNmBAyE2A0Fe2QApHCYysj
