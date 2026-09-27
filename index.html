@@ -5,54 +5,84 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Space-X Academy</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0d0d2b;color:#fff;font-family:Tahoma}header{background:linear-gradient(135deg,#1a1033,#2d1b69);padding:30px;text-align:center}#search{width:90%;max-width:420px;padding:13px;border-radius:30px;border:0;text-align:center;background:#1e1650;color:#fff}#courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;padding:20px} .card{background:#22205a;border:1px solid #3a2d7a;border-radius:18px;padding:16px;text-align:center} .card b{display:block;min-height:32px;font-size:13px} .card a{display:block;margin-top:10px;background:#7c3aed;color:#fff;padding:8px;border-radius:10px;text-decoration:none} #ai{position:fixed;bottom:20px;left:20px;background:#7c3aed;width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;text-decoration:none}
+body{margin:0;background:#0f0b2d;color:#fff;font-family:Tahoma;text-align:center}
+header{background:linear-gradient(135deg,#1a1033,#2d1b69);padding:30px 20px}
+#search{width:90%;max-width:400px;padding:12px;border-radius:25px;border:0;background:#1e1650;color:#fff;text-align:center}
+#box{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;padding:20px;max-width:1200px;margin:auto}
+.card{background:#22205a;border:1px solid #3a2d7a;border-radius:16px;padding:14px}
+.card b{display:block;font-size:12px;min-height:30px}
+.card a{display:block;margin-top:8px;background:#7c3aed;color:#fff;padding:7px;border-radius:10px;text-decoration:none;font-size:12px}
+#ai{position:fixed;bottom:90px;left:20px;background:#7c3aed;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;text-decoration:none;z-index:9999;box-shadow:0 4px 15px rgba(0,0,0,0.5)}
 </style>
 </head>
 <body>
-<header><h1>🚀 Space-X Academy</h1><p>87 كورس مجاني - الموف الغامق</p><input id="search" placeholder="ابحث..." onkeyup="doSearch()"></header>
-<div id="courses">
-<div class="card"><span>📚</span><b>HTML - كورس 1</b><a href="https://www.youtube.com/results?search_query=HTML - كورس 1+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>CSS - كورس 2</b><a href="https://www.youtube.com/results?search_query=CSS - كورس 2+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>JavaScript - كورس 3</b><a href="https://www.youtube.com/results?search_query=JavaScript - كورس 3+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Python - كورس 4</b><a href="https://www.youtube.com/results?search_query=Python - كورس 4+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>React - كورس 5</b><a href="https://www.youtube.com/results?search_query=React - كورس 5+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Figma - كورس 6</b><a href="https://www.youtube.com/results?search_query=Figma - كورس 6+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Photoshop - كورس 7</b><a href="https://www.youtube.com/results?search_query=Photoshop - كورس 7+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Excel - كورس 8</b><a href="https://www.youtube.com/results?search_query=Excel - كورس 8+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>ذكاء اصطناعي - كورس 9</b><a href="https://www.youtube.com/results?search_query=ذكاء اصطناعي - كورس 9+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>انجليزي - كورس 10</b><a href="https://www.youtube.com/results?search_query=انجليزي - كورس 10+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>UI UX - كورس 11</b><a href="https://www.youtube.com/results?search_query=UI UX - كورس 11+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Flutter - كورس 12</b><a href="https://www.youtube.com/results?search_query=Flutter - كورس 12+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Canva - كورس 13</b><a href="https://www.youtube.com/results?search_query=Canva - كورس 13+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Word - كورس 14</b><a href="https://www.youtube.com/results?search_query=Word - كورس 14+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>الماني - كورس 15</b><a href="https://www.youtube.com/results?search_query=الماني - كورس 15+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>After Effects - كورس 16</b><a href="https://www.youtube.com/results?search_query=After Effects - كورس 16+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Premiere - كورس 17</b><a href="https://www.youtube.com/results?search_query=Premiere - كورس 17+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Blender - كورس 18</b><a href="https://www.youtube.com/results?search_query=Blender - كورس 18+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>SQL - كورس 19</b><a href="https://www.youtube.com/results?search_query=SQL - كورس 19+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>PHP - كورس 20</b><a href="https://www.youtube.com/results?search_query=PHP - كورس 20+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>HTML - كورس 21</b><a href="https://www.youtube.com/results?search_query=HTML - كورس 21+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>CSS - كورس 22</b><a href="https://www.youtube.com/results?search_query=CSS - كورس 22+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>JavaScript - كورس 23</b><a href="https://www.youtube.com/results?search_query=JavaScript - كورس 23+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Python - كورس 24</b><a href="https://www.youtube.com/results?search_query=Python - كورس 24+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>React - كورس 25</b><a href="https://www.youtube.com/results?search_query=React - كورس 25+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Figma - كورس 26</b><a href="https://www.youtube.com/results?search_query=Figma - كورس 26+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Photoshop - كورس 27</b><a href="https://www.youtube.com/results?search_query=Photoshop - كورس 27+كورس+كامل" target="_blank">▶ تشغيل</a                                                                                                                                <div class="card"><span>📚</span><b>UI UX - كورس 31</b><a href="https://www.youtube.com/results?search_query=UI UX - كورس 31+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Flutter - كورس 32</b><a href="https://www.youtube.com/results?search_query=Flutter - كورس 32+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Canva - كورس 33</b><a href="https://www.youtube.com/results?search_query=Canva - كورس 33+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Word - كورس 34</b><a href="https://www.youtube.com/results?search_query=Word - كورس 34+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>الماني - كورس 35</b><a href="https://www.youtube.com/results?search_query=الماني - كورس 35+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>After Effects - كورس 36</b><a href="https://www.youtube.com/results?search_query=After Effects - كورس 36+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Premiere - كورس 37</b><a href="https://www.youtube.com/results?search_query=Premiere - كورس 37+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Blender - كورس 38</b><a href="https://www.youtube.com/results?search_query=Blender - كورس 38+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>SQL - كورس 39</b><a href="https://www.youtube.com/results?search_query=SQL - كورس 39+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>PHP - كورس 40</b><a href="https://www.youtube.com/results?search_query=PHP - كورس 40+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>HTML - كورس 41</b><a href="https://www.youtube.com/results
-<div class="card"><span>📚</span><b>HTML - كورس 61</b><a href="https://www.youtube.com/results?search_query=HTML - كورس 61+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>CSS - كورس 62</b><a href="https://www.youtube.com/results?search_query=CSS - كورس 62+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>JavaScript - كورس 63</b><a href="https://www.youtube.com/results?search_query=JavaScript - كورس 63+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Python - كورس 64</b><a href="https://www.youtube.com/results?search_query=Python - كورس 64+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>React - كورس 65</b><a href="https://www.youtube.com/results?search_query=React - كورس 65+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Figma - كورس 66</b><a href="https://www.youtube.com/results?search_query=Figma - كورس 66+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span>📚</span><b>Photoshop - كورس 67</b><a href="https://www.youtube.com/results?search_query=Photoshop - كورس 67+كورس+كامل" target="_blank">▶ تشغيل</a></div>
-<div class="card"><span
+<header><h1>🚀 Space-X Academy</h1><p>87 كورس مجاني ✨</p><input id="search" placeholder="🔍 ابحث عن كورس..." onkeyup="search()"></header>
+<div id="box">
+<div class="card"><b>HTML - كورس 1</b><a href="https://www.youtube.com/results?search_query=HTML - كورس 1+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>CSS - كورس 2</b><a href="https://www.youtube.com/results?search_query=CSS - كورس
+<div class="card"><b>UI UX - كورس 11</b><a href="https://www.youtube.com/results?search_query=UI UX - كورس 11+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Flutter - كورس 12</b><a href="https://www.youtube.com/results?search_query=Flutter - كورس 12+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Canva - كورس 13</b><a href="https://www.youtube.com/results?search_query=Canva - كورس 13+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Word - كورس 14</b><a href="https://www.youtube.com/results?search_query=Word - كورس 14+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>الماني - كورس 15</b><a href="https://www.youtube.com/results?search_query=الماني - كورس 15+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>After Effects - كورس 16</b><a href="https://www.youtube.com/results?search_query=After Effects - كورس 16+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Premiere - كورس 17</b><a href="https://www.youtube.com/results?search_query=Premiere - كورس 17+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Blender - كورس 18</b><a href="https://www.youtube.com/results?search_query=Blender - كورس 18+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>SQL - كورس 19</b><a href="https://www.youtube.com/results?search_query=SQL - كورس 19+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>PHP - كورس 20</b><a href="https://www.youtube.com/results?search_query=PHP - كورس 20+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>HTML - كورس 21</b><a href="https://www.youtube.com/results?search_query=HTML - كورس 21+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card
+  <div class="card"><b>HTML - كورس 41</b><a href="https://www.youtube.com/results?search_query=HTML - كورس 41+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>CSS - كورس 42</b><a href="https://www.youtube.com/results?search_query=CSS - كورس 42+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>JavaScript - كورس 43</b><a href="https://www.youtube.com/results?search_query=JavaScript - كورس 43+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Python - كورس 44</b><a href="https://www.youtube.com/results?search_query=Python - كورس 44+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>React - كورس 45</b><a href="https://www.youtube.com/results?search_query=React - كورس 45+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Figma - كورس 46</b><a href="https://www.youtube.com/results?search_query=Figma - كورس 46+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Photoshop - كورس 47</b><a href="https://www.youtube.com/results?search_query=Photoshop - كورس 47+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Excel - كورس 48</b><a href="https://www.youtube.com/results?search_query=Excel - كورس 48+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>ذكاء اصطناعي - كورس 49</b><a href="https://www.youtube.com/results?search_query=ذكاء اصطناعي - كورس 49+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>انجليزي - كورس 50</b><a href="https://www.youtube.com/results?search_query=انجليزي - كورس 50+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>UI UX - كورس 51</b><a href="https://www.youtube.com/results?search_query=UI UX - كورس 51+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Flutter - كورس 52</b><a href="https://www.youtube.com/results?search_query=Flutter - كورس 52+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Canva - كورس 53</b><a href="https://www.youtube.com/results?search_query=Canva - كورس 53+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Word - كورس 54</b><a href="https://www.youtube.com/results?search_query=Word - كورس 54+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>الماني - كورس 55</b><a href="https://www.youtube.com/results?search_query=الماني - كورس 55+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>After Effects - كورس 56</b><a href="https://www.youtube.com/results?search_query=After Effects - كورس 56+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Premiere - كورس 57</b><a href="https://www.youtube.com/results?search_query=Premiere - كورس 57+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Blender - كورس 58</b><a href="https://www.youtube.com/results?search_query=Blender - كورس 58+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>SQL - كورس 59</b><a href="https://www.youtube.com/results?search_query=SQL - كورس 59+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>PHP - كورس 60</b><a href="https://www.youtube.com/results?search_query=PHP - كورس 60+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>HTML - كورس 61</b><a href="https://www.youtube.com/results?search_query=HTML - كورس 61+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>CSS - كورس 62</b><a href="https://www.youtube.com/results?search_query=CSS - كورس 62+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>JavaScript - كورس 63</b><a href="https://www.youtube.com/results?search_query=JavaScript - كورس 63+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Python - كورس 64</b><a href="https://www.youtube.com/results?search_query=Python - كورس 64+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>React - كورس 65</b><a href="https://www.youtube.com/results?search_query=React - كورس 65+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Figma - كورس 66</b><a href="https://www.youtube.com/results?search_query=Figma - كورس 66+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Photoshop - كورس 67</b><a href="https://www.youtube.com/results?search_query=Photoshop - كورس 67+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Excel - كورس 68</b><a href="https://www.youtube.com/results?search_query=Excel - كورس 68+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>ذكاء اصطناعي - كورس 69</b><a href="https://www.youtube.com/results?search_query=ذكاء اصطناعي - كورس 69+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>انجليزي - كورس 70</b><a href="https://www.youtube.com/results?search_query=انجليزي - كورس 70+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>UI UX - كورس 71</b><a href="https://www.youtube.com/results?search_query=UI UX - كورس 71+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Flutter - كورس 72</b><a href="https://www.youtube.com/results?search_query=Flutter - كورس 72+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Canva - كورس 73</b><a href="https://www.youtube.com/results?search_query=Canva - كورس 73+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Word - كورس 74</b><a href="https://www.youtube.com/results?search_query=Word - كورس 74+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>الماني - كورس 75</b><a href="https://www.youtube.com/results?search_query=الماني - كورس 75+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>After Effects - كورس 76</b><a href="https://www.youtube.com/results?search_query=After Effects - كورس 76+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Premiere - كورس 77</b><a href="https://www.youtube.com/results?search_query=Premiere - كورس 77+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Blender - كورس 78</b><a href="https://www.youtube.com/results?search_query=Blender - كورس 78+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>SQL - كورس 79</b><a href="https://www.youtube.com/results?search_query=SQL - كورس 79+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>PHP - كورس 80</b><a href="https://www.youtube.com/results?search_query=PHP - كورس 80+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>HTML - كورس 81</b><a href="https://www.youtube.com/results?search_query=HTML - كورس 81+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>CSS - كورس 82</b><a href="https://www.youtube.com/results?search_query=CSS - كورس 82+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>JavaScript - كورس 83</b><a href="https://www.youtube.com/results?search_query=JavaScript - كورس 83+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Python - كورس 84</b><a href="https://www.youtube.com/results?search_query=Python - كورس 84+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>React - كورس 85</b><a href="https://www.youtube.com/results?search_query=React - كورس 85+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Figma - كورس 86</b><a href="https://www.youtube.com/results?search_query=Figma - كورس 86+كورس" target="_blank">▶ تشغيل</a></div>
+<div class="card"><b>Photoshop - كورس 87</b><a href="https://www.youtube.com/results?search_query=Photoshop - كورس 87+كورس" target="_blank">▶ تشغيل</a></div>
+</div>
+<a id="ai" href="https://gemini.google.com" target="_blank">🤖</a>
+<script>
+function search(){let v=document.getElementById('search').value.toLowerCase();document.querySelectorAll('.card').forEach(c=>c.style.display=c.innerText.toLowerCase().includes(v)?'':'');}
+</script>
+</body>
+  </html>
