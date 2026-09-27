@@ -5,27 +5,35 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Space-X Academy</title>
 <style>
-body{margin:0;background:#0a0a1f;color:#fff;font-family:sans-serif}
-header{text-align:center;padding:20px;background:#150a2e}
-h1{color:#a78bfa}
-input{width:90%;max-width:400px;padding:12px;border-radius:10px;border:0;margin-top:10px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;padding:15px}
-.card{background:#1e1e4a;border-radius:12px;padding:10px;text-align:center;border:1px solid #333}
-.card a{background:#7c3aed;color:#fff;padding:6px 10px;border-radius:8px;text-decoration:none;display:block;margin-top:6px}
-#aiBtn{position:fixed;bottom:20px;left:20px;background:linear-gradient(135deg,#7c3aed,#ec4899);color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;box-shadow:0 4px 15px rgba(124,58,237,.5);z-index:999}
+*{box-sizing:border-box}
+body{margin:0;background:#0d0d2b;color:#fff;font-family:Tahoma}
+header{background:#1a1033;padding:25px;text-align:center}
+h1{color:#a78bfa;margin:0}
+input{width:90%;max-width:450px;padding:12px;border-radius:12px;border:0;margin-top:15px;text-align:center}
+#courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;padding:20px}
+.card{background:#22205a;border-radius:14px;padding:14px;text-align:center;border:1px solid #3a3a8a}
+.card b{display:block;min-height:40px}
+.card a{display:block;margin-top:10px;background:#7c3aed;color:#fff;padding:8px;border-radius:10px;text-decoration:none;font-weight:bold}
+#ai{position:fixed;bottom:20px;left:20px;background:#7c3aed;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;text-decoration:none;z-index:9999}
 </style>
 </head>
 <body>
 <header>
 <h1>🚀 Space-X Academy</h1>
-<p>87 كورس 
-<input id="s" placeholder="ابحث Python" oninput="filter()">
+<p>87 كورس مجاني</p>
+<input id="search" placeholder="ابحث Python - تصميم - انجليزي" onkeyup="doSearch()">
 </header>
-<div class="grid" id="g"></div>
-
-<a id="aiBtn" href="https://gemini.google.com" target="_blank">🤖</a>
-
+<div id="courses"></div>
+<a id="ai" href="https://gemini.google.com" target="_blank">🤖</a>
 <script>
-const courses=[
-["HTML كامل - ","https://www.youtube.com/playlist?list=PLDoPjvoNmBAwDu_aA2VLpAylL1QM1oOq9"],
-["CSS كامل - ","https://www.youtube.com/playlist?list=PLDoPjvoNmBAzjs
+var data=[
+"HTML الزيرو","CSS الزيرو","JavaScript الزيرو","Python الزيرو","React Codezilla","Figma","Photoshop","Excel",
+"Python Data","ذكاء اصطناعي","تعلم انجليزي","جرافيك","UI UX","Node JS","Flutter","WordPress"
+];
+var all=[];
+for(var i=0;i<87;i++){
+ var name=data[i%data.length]+" "+(i+1);
+ all.push({name:name,link:"https://www.youtube.com/results?search_query="+encodeURIComponent(name+" كورس كامل")});
+}
+function show(list){
+ document.getElementById("courses").inner
