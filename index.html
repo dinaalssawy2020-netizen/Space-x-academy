@@ -1,17 +1,48 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Space-X Academy</title><style>body{margin:0;background:#0f0b2d;color:#fff;font-family:Tahoma;text-align:center}header{background:#1a1033;padding:20px;position:sticky;top:0;z-index:10}#search{width:90%;max-width:350px;padding:12px;border-radius:25px;border:0;background:#1e1650;color:#fff;text-align:center;font-size:16px;outline:none}#box{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;padding:15px;max-width:1200px;margin:auto;align-items:start}.card{background:#22205a;border:1px solid #3a2d7a;border-radius:15px;padding:12px;height:85px;display:flex;flex-direction:column;justify-content:space-between}.card b{font-size:11px}.card a{display:block;background:#7c3aed;color:#fff;padding:6px;border-radius:8px;text-decoration:none;font-size:11px}#ai{position:fixed;bottom:85px;left:15px;background:#7c3aed;width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;z-index:9999}</style></head><body><header><h1>🚀 Space-X Academy</h1><p>87 كورس مجاني ✨</p><input id="search" type="text" placeholder="🔍 ابحث مثلا Python"></header><div id="box"></div><a id="ai" href="https://gemini.google.com" target="_blank">🤖</a><script>
-const courses=["HTML","CSS","JavaScript","Python","React","Figma","Photoshop","Excel","ذكاء اصطناعي","انجليزي","UI UX","Flutter","Canva","Word","الماني","After Effects","Premiere","Blender","SQL","PHP"];
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Space-X Academy</title>
+<style>
+body{margin:0;background:#0f0b2d;color:#fff;font-family:Tahoma;text-align:center}
+header{background:#1a1033;padding:22px;position:sticky;top:0;z-index:10}
+#search{width:90%;max-width:360px;padding:12px;border-radius:25px;border:0;background:#1e1650;color:#fff;text-align:center;font-size:16px;outline:none}
+#box{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;padding:15px;max-width:1200px;margin:auto}
+.card{background:#22205a;border:1px solid #3a2d7a;border-radius:15px;padding:12px;height:85px;display:flex;flex-direction:column;justify-content:space-between}
+.card b{font-size:11px}
+.card a{display:block;background:#7c3aed;color:#fff;padding:6px;border-radius:8px;text-decoration:none;font-size:11px}
+footer{padding:20px;margin-top:30px;background:#1a1033;color:#a79bc9;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<h1> Space-X Academy</h1>
+<p>87 كورس مجاني ✨</p>
+<input id="search" type="text" placeholder="🔍 ابحث مثلا Python">
+</header>
+
+<div id="box"></div>
+
+<footer>
+  Created by Dina Alssawy © 2026 ✨<br>
+  Space-X Academy - تعلم بلا حدود
+</footer>
+
+<script>
+const courses=["HTML","CSS","JavaScript","Python","React","Figma","Photoshop","Excel"," ai ","English","UI UX","Flutter","Canva","Word","Jermaine","After Effects","Premiere","Blender","SQL","PHP","Node.js","Git","Linux","ICDL","Marketing"];
 const box=document.getElementById('box');
 for(let i=1;i<=87;i++){
   let name=courses[(i-1)%courses.length];
   box.innerHTML+=`<div class="card"><b>${name} - ${i}</b><a href="https://www.youtube.com/results?search_query=${name} كورس" target="_blank">▶ تشغيل</a></div>`;
 }
 const s=document.getElementById('search');
-const cards=document.querySelectorAll('.card');
-function doSearch(){
+s.addEventListener('input',()=>{
   let q=s.value.toLowerCase().trim();
   document.querySelectorAll('.card').forEach(c=>{
-    c.style.display = q==='' || c.innerText.toLowerCase().includes(q) ? 'flex' : 'none';
+    c.style.display=(q===''||c.innerText.toLowerCase().includes(q))?'flex':'none';
   });
-}
-s.addEventListener('input',doSearch);
-</script></body></html>
+});
+</script>
+</body>
+</html>
