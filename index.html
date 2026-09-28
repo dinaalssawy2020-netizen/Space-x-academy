@@ -12,33 +12,31 @@ header{background:#1a1033;padding:22px;position:sticky;top:0;z-index:10}
 .card{background:#22205a;border:1px solid #3a2d7a;border-radius:15px;padding:12px;height:85px;display:flex;flex-direction:column;justify-content:space-between}
 .card b{font-size:11px}
 .card a{display:block;background:#7c3aed;color:#fff;padding:6px;border-radius:8px;text-decoration:none;font-size:11px}
-footer{padding:20px;margin-top:30px;background:#1a1033;color:#a79bc9;font-size:13px}
+.gemini-btn{position:fixed;bottom:20px;left:20px;background:linear-gradient(45deg,#7c3aed,#ec4899);color:#fff;padding:14px 20px;border-radius:50px;text-decoration:none;font-weight:bold;box-shadow:0 4px 20px rgba(124,58,237,.6);z-index:999}
+footer{padding:25px;margin-top:30px;background:#1a1033;color:#a79bc9;font-size:13px;line-height:1.8}
 </style>
 </head>
 <body>
 <header>
-<h1> Space-X Academy</h1>
-<p>87 courses ✨</p>
-<input id="search" type="text" placeholder="🔍 search  Python">
+<h1>🚀 Space-X Academy</h1>
+<p>87  courses ✨</p>
+<input id="search" type="text" placeholder="🔍  search Python">
 </header>
 <div id="box"></div>
-<a href="https://gemini.google.com/app" target="_blank" style="position:fixed;bottom:20px;left:20px;background:linear-gradient(45deg,#7c3aed,#ec4899);color:#fff;padding:14px 18px;border-radius:50px;text-decoration:none;font-weight:bold;box-shadow:0 4px 15px rgba(124,58,237,.5);z-index:99">
-  ✨ ask Gemini AI
-</a>
+<a class="gemini-btn" href="https://gemini.google.com/app" target="_blank">✨ Gemini AI</a>
 <footer>
   Created by Dina Alssawy © 2026 ✨<br>
   Space-X Academy - teach without limit 
 </footer>
 <script>
-const courses=["HTML","CSS","JavaScript","Python","React","Figma","Photoshop","Excel"," ai ","English","UI UX","Flutter","Canva","Word","Jermaine","After Effects","Premiere","Blender","SQL","PHP","Node.js","Git","Linux","ICDL","Marketing"];
+const courses=["HTML","CSS","JavaScript","Python","React","Figma","Photoshop","Excel"English","AI","UI UX","Flutter","Canva","Word","Germany","After Effects","Premiere","Blender","SQL","PHP","Node.js","Git","Linux","ICDL","Marketing"];
 const box=document.getElementById('box');
 for(let i=1;i<=87;i++){
   let name=courses[(i-1)%courses.length];
   box.innerHTML+=`<div class="card"><b>${name} - ${i}</b><a href="https://www.youtube.com/results?search_query=${name} كورس" target="_blank">▶ تشغيل</a></div>`;
 }
-const s=document.getElementById('search');
-s.addEventListener('input',()=>{
-  let q=s.value.toLowerCase().trim();
+document.getElementById('search').addEventListener('input',e=>{
+  let q=e.target.value.toLowerCase().trim();
   document.querySelectorAll('.card').forEach(c=>{
     c.style.display=(q===''||c.innerText.toLowerCase().includes(q))?'flex':'none';
   });
