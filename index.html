@@ -3,44 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Space-X Academy</title>
+<title>Space X Academy</title>
 <style>
 body{margin:0;background:#0f0b2d;color:#fff;font-family:Tahoma;text-align:center}
-header{background:#1a1033;padding:22px;position:sticky;top:0;z-index:10}
-#search{width:90%;max-width:360px;padding:12px;border-radius:25px;border:0;background:#1e1650;color:#fff;text-align:center;font-size:16px;outline:none}
-#box{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;padding:15px;max-width:1200px;margin:auto}
-.card{background:#22205a;border:1px solid #3a2d7a;border-radius:15px;padding:12px;height:85px;display:flex;flex-direction:column;justify-content:space-between}
-.card b{font-size:11px}
-.card a{display:block;background:#7c3aed;color:#fff;padding:6px;border-radius:8px;text-decoration:none;font-size:11px}
-.gemini-btn{position:fixed;bottom:20px;left:20px;background:linear-gradient(45deg,#7c3aed,#ec4899);color:#fff;padding:14px 20px;border-radius:50px;text-decoration:none;font-weight:bold;box-shadow:0 4px 20px rgba(124,58,237,.6);z-index:999}
-footer{padding:25px;margin-top:30px;background:#1a1033;color:#a79bc9;font-size:13px;line-height:1.8}
+header{background:#1a1033;padding:22px;position:sticky;top:0;z-index:5}
+#searchWrap{display:flex;gap:8px;justify-content:center;max-width:400px;margin:15px auto 0}
+#search{flex:1;padding:12px;border-radius:25px;border:0;background:#1e1650;color:#fff;text-align:center;outline:none}
+#searchBtn{background:#7c3aed;color:#fff;border:0;padding:12px 20px;border-radius:25px;font-weight:bold}
+#box{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:12px;padding:16px;max-width:1200px;margin:auto}
+.card{background:#22205a;border:1px solid #3a2d7a;border-radius:15px;padding:12px}
+.card b{font-size:12px;display:block;margin-bottom:8px}
+.card a{background:#7c3aed;color:#fff;padding:7px;border-radius:8px;text-decoration:none;font-size:12px;display:block}
+footer{padding:25px;background:#1a1033;margin-top:20px;font-size:13px;color:#a79bc9}
+.gemini{position:fixed;bottom:20px;left:20px;background:linear-gradient(45deg,#7c3aed,#ec4899);color:#fff;padding:14px 20px;border-radius:50px;text-decoration:none;font-weight:bold;z-index:999}
 </style>
 </head>
 <body>
 <header>
-<h1>🚀 Space-X Academy</h1>
-<p>87  courses ✨</p>
-<input id="search" type="text" placeholder="🔍  search Python">
+<h1>🚀 Space X Academy</h1>
+<p> courses </p>
+<div id="searchWrap">
+<input id="search" placeholder="🔍 ابحث مثلا Python">
+<button id="searchBtn">بحث</button>
+</div>
 </header>
 <div id="box"></div>
-<a class="gemini-btn" href="https://gemini.google.com/app" target="_blank">✨ Gemini AI</a>
-<footer>
-  Created by Dina Alssawy © 2026 ✨<br>
-  Space-X Academy - teach without limit 
-</footer>
+<a class="gemini" href="https://gemini.google.com" target="_blank">✨ Gemini AI</a>
+<footer>Created by Dina Alssawy © 2026<br>Space-X Academy-teac hwithout limit </footer>
 <script>
-const courses=["HTML","CSS","JavaScript","Python","React","Figma","Photoshop","Excel"English","AI","UI UX","Flutter","Canva","Word","Germany","After Effects","Premiere","Blender","SQL","PHP","Node.js","Git","Linux","ICDL","Marketing"];
+const list=["HTML","CSS","JavaScript","Python","React","Figma","Photoshop","Excel","AI","English","UI/UX","Flutter","Canva","Word","German","After Effects","Premiere","Blender","SQL","PHP","Node.js","Git","Linux","ICDL","Marketing","Illustrator","InDesign","XD","Kotlin","Swift","Java","C++","C#","Ruby","Go","Data Science","Machine Learning","Cyber Security","Networking","CCNA","MOS","Power BI","Tableau","AutoCAD","3D Max","WordPress","Shopify","SEO","Content Writing","CV Writing","Interview","Freelancing","E-commerce","Accounting","HR","Project Management","Business","Economics","Math","Physics","Chemistry","Biology","History","Geography","Arabic","French","Spanish","Italian","Turkish","Chinese","Public Speaking","Photography","Video Editing","Animation","Game Dev","Unity","Unreal","Arduino","Robotics","Blockchain","NFT","Meta Ads","Google Ads","Copywriting","Leadership","Time Management","Python Advanced","React Advanced","Full Stack"];
 const box=document.getElementById('box');
-for(let i=1;i<=87;i++){
-  let name=courses[(i-1)%courses.length];
-  box.innerHTML+=`<div class="card"><b>${name} - ${i}</b><a href="https://www.youtube.com/results?search_query=${name} كورس" target="_blank">▶ تشغيل</a></div>`;
-}
-document.getElementById('search').addEventListener('input',e=>{
-  let q=e.target.value.toLowerCase().trim();
-  document.querySelectorAll('.card').forEach(c=>{
-    c.style.display=(q===''||c.innerText.toLowerCase().includes(q))?'flex':'none';
-  });
-});
-</script>
-</body>
-</html>
+function show
