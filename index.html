@@ -5,32 +5,42 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Space X Academy</title>
 <style>
-body{margin:0;background:#0f0b2d;color:#fff;font-family:Tahoma;text-align:center}
-header{background:#1a1033;padding:22px;position:sticky;top:0;z-index:5}
-#searchWrap{display:flex;gap:8px;justify-content:center;max-width:400px;margin:15px auto 0}
-#search{flex:1;padding:12px;border-radius:25px;border:0;background:#1e1650;color:#fff;text-align:center;outline:none}
-#searchBtn{background:#7c3aed;color:#fff;border:0;padding:12px 20px;border-radius:25px;font-weight:bold}
-#box{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:12px;padding:16px;max-width:1200px;margin:auto}
-.card{background:#22205a;border:1px solid #3a2d7a;border-radius:15px;padding:12px}
-.card b{font-size:12px;display:block;margin-bottom:8px}
-.card a{background:#7c3aed;color:#fff;padding:7px;border-radius:8px;text-decoration:none;font-size:12px;display:block}
-footer{padding:25px;background:#1a1033;margin-top:20px;font-size:13px;color:#a79bc9}
-.gemini{position:fixed;bottom:20px;left:20px;background:linear-gradient(45deg,#7c3aed,#ec4899);color:#fff;padding:14px 20px;border-radius:50px;text-decoration:none;font-weight:bold;z-index:999}
+body{margin:0;background:#0d0a2a;color:#fff;font-family:Tahoma;text-align:center}
+header{background:#17123a;padding:18px;position:sticky;top:0;z-index:9}
+#searchWrap{display:flex;gap:6px;justify-content:center;max-width:380px;margin:12px auto 0}
+#search{flex:1;padding:12px;border-radius:20px;border:0;background:#241e5a;color:#fff;text-align:center}
+#searchBtn{background:#8b5cf6;color:#fff;border:0;padding:12px 18px;border-radius:20px;font-weight:bold}
+#box{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:12px}
+.card{background:#221c55;border-radius:12px;padding:10px;border:1px solid #3b3488}
+.card b{font-size:11px;display:block;margin-bottom:6px}
+.card a{background:#7c3aed;color:#fff;padding:6px;border-radius:7px;text-decoration:none;font-size:11px;display:block}
+footer{padding:18px;font-size:10px;color:#a89bc9;background:#17123a;margin-top:10px}
+.gemini{position:fixed;bottom:15px;left:10px;background:linear-gradient(45deg,#7c3aed,#ec4899);color:#fff;padding:10px 16px;border-radius:50px;text-decoration:none;font-size:11px;font-weight:bold}
 </style>
 </head>
 <body>
 <header>
-<h1>🚀 Space X Academy</h1>
-<p> courses </p>
-<div id="searchWrap">
-<input id="search" placeholder="🔍 ابحث مثلا Python">
-<button id="searchBtn">بحث</button>
-</div>
+<h3 style="margin:0">Space X Academy </h3>
+<div id="searchWrap"><input id="search" placeholder=" search "><button id="searchBtn">بحث</button></div>
 </header>
-<div id="box"></div>
-<a class="gemini" href="https://gemini.google.com" target="_blank">✨ Gemini AI</a>
-<footer>Created by Dina Alssawy © 2026<br>Space-X Academy-teac hwithout limit </footer>
+<div id="box">
+<div class="card"><b>HTML</b><a href="https://www.youtube.com/results?search_query=HTML+كورس" target="_blank">تشغيل</a></div>
+<div class="card"><b>CSS</b><a href="https://www.youtube.com/results?search_query=CSS+كورس" target="_blank">تشغيل</a></div>
+<div class="card"><b>JavaScript</b><a href="https://www.youtube.com/results?search_query=JavaScript+كورس" target="_blank">تشغيل</a></div>
+<div class="card"><b>Python</b><a href="https://www.youtube.com/results?search_query=Python+كورس" target="_blank">تشغيل</a></div>
+<div class="card"><b>React</b><a href="https://www.youtube.com/results?search_query=React+كورس" target="_blank">تشغيل</a></div>
+<div class="card"><b>Figma</b><a href="https://www.youtube.com/results?search_query=Figma+كورس" target="_blank">تشغيل</a></div>
+<div class="card"><b>Photoshop</b><a href="https://www.youtube.com/results?search_query=Photoshop+كورس" target="_blank">تشغيل</a></div>
+<div class="card"><b>Excel</b><a href="https://www.youtube.com/results?search_query=Excel+كورس" target="_blank">تشغيل</a></div>
+<div class="card"><b>Python Advanced</b><a href="#">تشغيل</a></div>
+<div class="card"><b>German</b><a href="#">تشغيل</a></div>
+</div>
+<a class="gemini" href="https://gemini.google.com" target="_blank">Gemini AI ✨</a>
+<footer>Created by Dina Alssawy © 2026</footer>
 <script>
-const list=["HTML","CSS","JavaScript","Python","React","Figma","Photoshop","Excel","AI","English","UI/UX","Flutter","Canva","Word","German","After Effects","Premiere","Blender","SQL","PHP","Node.js","Git","Linux","ICDL","Marketing","Illustrator","InDesign","XD","Kotlin","Swift","Java","C++","C#","Ruby","Go","Data Science","Machine Learning","Cyber Security","Networking","CCNA","MOS","Power BI","Tableau","AutoCAD","3D Max","WordPress","Shopify","SEO","Content Writing","CV Writing","Interview","Freelancing","E-commerce","Accounting","HR","Project Management","Business","Economics","Math","Physics","Chemistry","Biology","History","Geography","Arabic","French","Spanish","Italian","Turkish","Chinese","Public Speaking","Photography","Video Editing","Animation","Game Dev","Unity","Unreal","Arduino","Robotics","Blockchain","NFT","Meta Ads","Google Ads","Copywriting","Leadership","Time Management","Python Advanced","React Advanced","Full Stack"];
-const box=document.getElementById('box');
-function show
+let s=document.getElementById('search'),b=document.getElementById('searchBtn');
+function filter(v){v=v.toLowerCase();document.querySelectorAll('.card').forEach(c=>{c.style.display=c.innerText.toLowerCase().includes(v)?'block':'none'})}
+b.onclick=()=>filter(s.value); s.oninput=()=>filter(s.value);
+</script>
+</body>
+</html>
