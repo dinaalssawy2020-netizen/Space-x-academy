@@ -9,11 +9,8 @@ body{margin:0;background:#0d0a2a;color:#fff;font-family:Tahoma;text-align:center
 header{background:#17123a;padding:18px;position:sticky;top:0;z-index:9}
 #searchWrap{display:flex;gap:6px;justify-content:center;max-width:380px;margin:12px auto 0}
 #search{flex:1;padding:12px;border-radius:20px;border:0;background:#241e5a;color:#fff;text-align:center;outline:none}
-#searchBtn{background:#8b5cf6;color:#fff;border:0;padding:12px 18px;border-radius:20px;font-weight:bold}
-#box{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:12px;max-width:800px;margin:auto}
-.card{background:#221c55;border-radius:12px;padding:10px;border:1px solid #3b3488}
-.card b{font-size:11px;display:block;margin-bottom:6px}
-.card a{background:#7c3aed;color:#fff;padding:6px;border-radius:7px;text-decoration:none;font-size:11px;display:block}
+#searchBtn{background:#8b5cf6;color:#;font-weight:bold}
+#box{display:block}
 footer{padding:25px;background:#000;color:#fff;font-size:13px;font-weight:bold;margin-top:20px;border-top:2px solid #7c3aed}
 .gemini{position:fixed !important;bottom:20px !important;left:15px !important;background:linear-gradient(45deg,#7c3aed,#ec4899) !important;color:#fff !important;padding:14px 22px !important;border-radius:50px !important;text-decoration:none !important;font-size:13px !important;font-weight:bold !important;z-index:99999 !important;box-shadow:0 0 15px #ec4899;display:block !important}
 </style>
@@ -37,14 +34,11 @@ footer{padding:25px;background:#000;color:#fff;font-size:13px;font-weight:bold;m
 <script>
 const s=document.getElementById('search'),b=document.getElementeId('searchBtn');
 function doSearch(){
-  const v=s.value.toLowerCase().trim();
+  const v=s.value.toLowerCase().trim
   document.querySelectorAll('.card').forEach(c=>{
-    const name=c.querySelector('b').innerText.toLowerCase();
+    const nar('b').innerText.toLerCase();
     c.style.display = v==='' || name.includes(v) ? 'block' : 'none';
   });
 }
 b.onclick=doSearch;
-s.addEventListener('input',doSearch);
-</script>
-</body>
-</html>
+s.addEventListener('inpu
