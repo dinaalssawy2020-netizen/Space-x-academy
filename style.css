@@ -98,6 +98,9 @@ h3 {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* ظل ناعم يعطي إحساساً بالعمق */
     opacity: 0.9; /* بريق خفيف */
 }
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+gap: 15px;
 
 /* تنسيق تذييل الصفحة للحفاظ على جملة جيميني بشكل منسق */
 footer, .footer-text {
