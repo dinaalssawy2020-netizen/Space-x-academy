@@ -45,3 +45,64 @@ a:hover, button:hover {
 #user-input { flex: 1; padding: 8px; border: none; border-radius: 4px; outline: none; }
 #send-btn { background: #66fcf1; color: #0b0c10; border: none; padding: 8px 15px; margin-left: 5px; cursor: pointer; border-radius: 4px; font-weight: bold; }
 
+/* استدعاء خطوط حديثة تدعم العربية والإنجليزية بشكل احترافي */
+@import url('https://googleapis.com');
+
+body {
+    font-family: 'Cairo', 'Inter', sans-serif;
+    background-color: #ffffff; /* سيعتمد على لون خلفيتك الحالي تلقائياً */
+}
+
+/* تنسيق عنوان المنصة الاحترافي */
+h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+/* تنسيق أسماء الأقسام الجديدة */
+.category-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 40px 0 20px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eaeaea; /* خط فاصل بسيط بين الأقسام */
+}
+
+/* تحويل القائمة العمودية الجافة إلى شبكة بطاقات (Grid System) */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    padding: 20px 0;
+}
+
+/* جعل الأزرار تبدو تفاعلية واحترافية دون تغيير لونها الأصلي */
+.courses-grid a, .courses-grid button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    /* تأثير الانتقال السلس للحركة */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease; 
+}
+
+/* حركة الماوس الاحترافية عند التمرير (Hover Effect) */
+.courses-grid a:hover, .courses-grid button:hover {
+    transform: translateY(-3px); /* ارتفاع بسيط للأعلى */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* ظل ناعم يعطي إحساساً بالعمق */
+    opacity: 0.9; /* بريق خفيف */
+}
+
+/* تنسيق تذييل الصفحة للحفاظ على جملة جيميني بشكل منسق */
+footer, .footer-text {
+    margin-top: 50px;
+    padding: 20px;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+}
