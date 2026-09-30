@@ -1,0 +1,14 @@
+const tabs = document.querySelectorAll('.tab-btn');
+const contents = document.querySelectorAll('.tab-content');
+
+tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+        // إزالة النشاط من كل الأزرار والمحتويات
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        
+        // تفعيل التاب الحالي
+        tab.classList.add('active');
+        contents[index].classList.add('active');
+    });
+});
