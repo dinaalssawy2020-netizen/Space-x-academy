@@ -49,3 +49,51 @@ function doSearch(){
 }
 b.onclick=doSearch;
 s.addEventListener('
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space X Academy</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #121212; color: white; margin: 0; padding: 0; }
+        header { padding: 20px; background-color: #1a1a1a; }
+        .gemini-badge { color: #8ab4f8; font-size: 1.1rem; margin-top: 5px; }
+        .courses-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+        .course-card { border: 1px solid #333; padding: 20px; text-align: center; border-radius: 12px; background: #1e1e1e; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .course-card h3 { margin: 0 0 15px 0; font-size: 1.2rem; }
+        .download-btn { background: #8ab4f8; color: #121212; border: none; padding: 8px 20px; cursor: pointer; border-radius: 20px; font-weight: bold; text-decoration: none; display: inline-block; transition: 0.3s; }
+        .download-btn:hover { background: #c2e7ff; }
+        .admin-link { display: inline-block; margin: 20px; color: #8ab4f8; text-decoration: none; font-size: 0.9rem; border: 1px dashed #8ab4f8; padding: 5px 15px; border-radius: 5px; }
+        footer { padding: 20px; background-color: #1a1a1a; margin-top: 40px; color: #aaa; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر الأصلي الخاص بكِ مضافاً إليه توقيع جميني -->
+    <header>
+        <h1>Space X Academy</h1>
+        <p>87 Course</p>
+        <div class="gemini-badge">✨ Gemini AI Created by Dina Alssawy © 2026</div>
+    </header>
+    
+    <!-- رابط خفي للدخول إلى لوحة التحكم لتعديل الروابط السحابية -->
+    <a href="admin.html" class="admin-link">لوحة التحكم (خاص بالإدارة)</a>
+
+    <!-- هذه الحاوية سيتم ملؤها تلقائياً بـ 87 كورس بواسطة الـ JS دون أي تدخل منكِ -->
+    <div id="coursesContainer" class="courses-container"></div>
+
+    <!-- الفوتر الأصلي الخاص بكِ مضافاً إليه توقيع جميني -->
+    <footer>
+        <p>✨ Gemini AI Created by Dina Alssawy © 2026</p>
+        <p>Space X Academy</p>
+    </footer>
+
+    <!-- مكتبات سحابة Firebase لتشغيل الأزرار وتحديثها تلقائياً -->
+    <script src="https://gstatic.com"></script>
+    <script src="https://gstatic.com"></script>
+    
+    <!-- ربط ملف الـ JS الذي يتحكم بجلب البيانات -->
+    <script src="app.js"></script>
+</body>
+</html>
