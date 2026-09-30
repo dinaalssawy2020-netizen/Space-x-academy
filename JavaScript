@@ -12,3 +12,29 @@ tabs.forEach((tab, index) => {
         contents[index].classList.add('active');
     });
 });
+// مصفوفة تحتوي على الكورسات (يمكنك العثور على القائمة الكاملة للـ 87 كورس في المراجع المرتبطة)
+const spaceXCourses = [
+    { id: 1, name: "HTML", downloadUrl: "#" },
+    { id: 2, name: "CSS", downloadUrl: "#" },
+    { id: 3, name: "JavaScript", downloadUrl: "#" }
+    // ... باقي الكورسات حتى 87 كورس
+];
+
+// دالة لرفع البيانات السحابية لأول مرة
+function uploadInitialCoursesToFirebase() {
+    const coursesRef = database.ref('courses');
+    coursesRef.once('value', (snapshot) => {
+        if (!snapshot.exists()) {
+            const dataToUpload = {};
+            spaceXCourses.forEach(course => {
+                dataToUpload[course.id] = { name: course.name, downloadUrl: course.downloadUrl };
+            });
+            coursesRef.set(dataToUpload)
+                .then(() => console.log("✅ تم رفع الكورسات بنجاح إلى Firebase!"))
+                .catch((err) => console.error("❌ فشل الرفع:", err));
+        } else {
+            console.log("ℹ️ الكورسات مرفوعة مسبقاً في السحابة.");
+        }
+    });
+}
+uploadInitialCoursesToFirebase();
